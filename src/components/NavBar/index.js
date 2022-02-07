@@ -11,18 +11,18 @@ export const Navbar = () => {
       <div className="navbar-collapse">
         <div className="navbar-nav">
           <NavLink
-            activeClassName="active"
+            // activeClassName="active"
             className="nav-item nav-link"
-            exact
+            // exact
             to="/summer"
           >
             Summer
           </NavLink>
 
           <NavLink
-            activeClassName="active"
+            // activeClassName="active"
             className="nav-item nav-link"
-            exact
+            // exact
             to="/winter"
           >
             Winter
@@ -33,9 +33,9 @@ export const Navbar = () => {
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul className="navbar-nav ml-auto">
           <NavLink
-            activeClassName="active"
+            // activeClassName="active"
             className="nav-item nav-link"
-            exact
+            // exact
             to="/login"
           >
             Logout
