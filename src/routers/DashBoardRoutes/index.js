@@ -12,7 +12,7 @@ export const DashBoardRoutes = () => {
       <div className='container mt-3'>
         <Routes>
           <Route excat path="/summer" element={ <Summer /> }/>
-          <Route excat path="/clothing" element={ <Clothing /> }/>
+          <Route excat path="/clothing/:Id" element={ <Clothing /> }/>
           <Route excat path="/winter" element={ <Winter /> }/>
           <Route path="/" element={ <Summer /> }/>
         </Routes>

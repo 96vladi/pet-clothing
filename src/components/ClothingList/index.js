@@ -1,19 +1,20 @@
 import React from 'react';
 import { getClothingBySeason } from '../../selectors/getClothingsBySeason';
+import { ClothingCard } from '../ClothingCard';
 
 export const ClothingList = ({season}) => {
 
   const clothing = getClothingBySeason(season);
 
   return (
-    <ul>
+    <div className="row row-cols-1 row-cols-md-3">
       {
         clothing.map(clothi => (
-          <li key={clothi.id}>
-            {clothi.superhero}
-          </li>
+          <ClothingCard 
+            key={clothi.id}
+            { ...clothi }/>
         ))
       }
-    </ul>
+    </div>
   );
 };
