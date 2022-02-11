@@ -1,20 +1,26 @@
-import React from 'react'
-import { listClothing } from '../../data/ListData'
+import React, { useMemo } from 'react'
+import queryString from 'query-string';
+
 import { ClothingCard } from '../ClothingCard';
 import { useForm } from '../../Hooks/useForm';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getClothingByName } from '../../selectors/getClothingByName';
 
 export const Search = () => {
 
-  const clothingFiltered = listClothing;
-  
+  const history = useNavigate();
+  const location = useLocation();
+  const { q='' } = queryString.parse(location.search);
+
   const [ formValues, handleInputChange ] = useForm({
-    searchText: ''
+    searchText: q
   });
   const { searchText } = formValues;
 
+  const clothingFiltered = useMemo(() => getClothingByName(q), [q]);
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(searchText)
+    history(`?q=${searchText}`);
   };
 
   return (
@@ -45,6 +51,20 @@ export const Search = () => {
         <div className='col-7'>
           <h4>Result</h4>
           <hr />
+          {
+            (q === '')
+              &&
+              <div className='alert alert-info'>
+                Search a clothing
+              </div>
+          }
+          {
+            (q !== '' && clothingFiltered.length === 0)
+            &&
+            <div className='alert alert-danger'>
+              there is no a clothing with { q }
+            </div>
+          }
           {
             clothingFiltered.map(clothi => (
               <ClothingCard 
