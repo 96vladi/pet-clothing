@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export const useForm = ( initialState = {} ) => {
     
-    const [formValues, setValues] = useState(initialState);
+    const [values, setValues] = useState(initialState);
 
     const reset = () => {
         setValues( initialState );
@@ -13,12 +13,12 @@ export const useForm = ( initialState = {} ) => {
     const handleInputChange = ({ target }) => {
 
         setValues({
-            ...formValues,
+            ...values,
             [ target.name ]: target.value
         });
 
     }
 
-    return [ formValues, handleInputChange, reset ];
+    return [ values, handleInputChange, reset ];
 
 }
